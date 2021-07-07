@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableHypermediaSupport(type = {HypermediaType.HAL_FORMS, HypermediaType.HAL })
+//@EnableHypermediaSupport(type = {HypermediaType.HAL })
 @SpringBootApplication
 public class DemoApplication {
 

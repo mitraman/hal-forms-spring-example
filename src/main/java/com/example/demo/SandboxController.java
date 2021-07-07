@@ -21,17 +21,22 @@ public class SandboxController {
     Logger log = LoggerFactory.getLogger(SandboxController.class);
 
     // @RequestMapping(value = "/sandbox", produces = {"application/hal+json"})
-    @GetMapping(value = "/sandbox", produces = {"application/hal+json"})
+    // @GetMapping(value = "/sandbox", produces = {"application/hal+json"})
+    @GetMapping(value = "/sandbox")
     public HttpEntity<SandboxModel> start() {
 
         SandboxModel sandbox = new SandboxModel("Demo Sandbox");        
 
-        // Create the rel URI by getting a link to the form controller class
-        URI relURI = linkTo(methodOn(APIListingFormController.class).apiForm()).toUri();
+        // Create the rel URI by getting a link to the HAL Forms method for creating new API listings
+        String apiListRel = linkTo(methodOn(APIListingController.class).newAPIForm(null)).toUri().toString();
 
         // Create a link to the api listing controller
-        Link apiListLink = linkTo(methodOn(APIListingController.class).all()).withRel(relURI.toString());
+        Link apiListLink = linkTo(methodOn(APIListingController.class).all()).withRel(apiListRel);
 
+        // Add an affordance to the get listings link, tying it to the POST create listing operation. This should generate
+        // a HAL-FORMS representation automatically in the middleware.
+        apiListLink.andAffordance(afford(methodOn(APIListingController.class).newAPIListing(null)));
+            
         // Add the links to our sandbox representation
         sandbox.add(linkTo(methodOn(SandboxController.class).start()).withSelfRel());
         sandbox.add(apiListLink);

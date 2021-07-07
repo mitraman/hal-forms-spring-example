@@ -21,6 +21,8 @@ public class APIListing {
         this.baseURI = baseURI;
     }
 
+    @org.springframework.data.annotation.Id
+    @GeneratedValue
     public Long getId() {
         return this.id;
     }
