@@ -44,7 +44,7 @@ CollectionModel<EntityModel<Employee>> all() {
 
 
 
-    @GetMapping(value = "/apis", produces = {"application/hal+json"})
+    @GetMapping(value = "/sandbox/apis", produces = {"application/hal+json"})
     CollectionModel<EntityModel<APIListing>> all() {
         
         List <EntityModel<APIListing>> apiListingCollection = repository.findAll().stream()
@@ -57,7 +57,7 @@ CollectionModel<EntityModel<Employee>> all() {
         );
     }
         
-    @RequestMapping(value = "/apis/{id}", produces = {"application/hal+json"})
+    @RequestMapping(value = "/sandbox/apis/{id}", produces = {"application/hal+json"})
     EntityModel<APIListing> one(@PathVariable Long id) {
         APIListing apiListing = repository.findById(id).get();
 
@@ -73,7 +73,7 @@ CollectionModel<EntityModel<Employee>> all() {
     }
     */
     
-    @PostMapping("/apis")
+    @PostMapping("/sandbox/apis")
     APIListing newAPIListing(@RequestBody APIListing newAPIListing) {
         return repository.save(newAPIListing);
     }

@@ -1,0 +1,10 @@
+com/example/demo/DemoApplication.class
+com/example/demo/SandboxController.class
+com/example/demo/APIListingRepository.class
+com/example/demo/APIListingFormController$APIListingForm.class
+com/example/demo/SandboxModel.class
+com/example/demo/APIListingFormController.class
+com/example/demo/APIListingFormController$formProperty.class
+com/example/demo/APIListingController.class
+com/example/demo/APIListing.class
+com/example/demo/APIListingFormController$formTemplate.class

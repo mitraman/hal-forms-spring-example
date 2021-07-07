@@ -9,6 +9,12 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+* I'm still experimenting with this class to find the best way of rendering HAL-FORMS.
+* The in-built spring-hateoas model feels too complicated and inflexible. Looking into building something myself.
+* 
+*/
+
 @RestController
 public class APIListingFormController {
 
@@ -49,14 +55,16 @@ public class APIListingFormController {
     */
     
     
-    @GetMapping(value = "/sandbox/rels/api-listing", produces = {"application/prs.hal-forms+json"})
+        @GetMapping(value = "/sandbox/rels/api-listing", produces = {"application/prs.hal-forms+json"})
     EntityModel<APIListing> apiForm() {
         
-        APIListing apiListing = repository.findById(id).get();
+        //APIListing apiListing = repository.findById(id).get();
 
+        /*
         return EntityModel.of(apiListing, 
             linkTo(methodOn(APIListingFormController.class).one(id)).withSelfRel()
         );
+        */
         
         return EntityModel.of(new APIListing("test", "baseUri"));
     }    
